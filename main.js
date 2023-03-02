@@ -30,8 +30,11 @@ gameBoard.appendChild(breadDiv);
 // // Load Sheep Sound //
 // const sheepSound = new sound(chrome.runtime.getURL('/sounds/sheepSound.mp3'));
 
-// // Load Munch Sound //
+// // Load Munch Sound //trying the munch audio again
 // const munchSound = new sound(chrome.runtime.getURL('/sounds/munchSound.mp3'));
+// let munchSound = new Audio();
+// munchSound.src = chrome.runtime.getURL('/sounds/munchSound.mp3');
+
 
 // Get Mouse Position //
 const mousePos = {};
