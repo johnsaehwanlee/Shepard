@@ -1,9 +1,8 @@
 class Grunt {
     constructor(gameBoard) {
-        this.SPEED = 1000000;
+        this.SPEED = 10;
         this.pace = 1;
         this.node = document.createElement('div');
-        // this.node.src = './images/grunt.png';
         this.node.setAttribute('class', 'gruntDiv');
 
         const viewportWidth = window.innerWidth;
@@ -11,15 +10,13 @@ class Grunt {
 
         const randomTop = (Math.floor(Math.random() * viewportHeight));
         const randomLeft = (Math.floor(Math.random() * viewportWidth));
-        console.log(gameBoard.style.height)
-        console.log(gameBoard.style.width)
 
         this.node.style.top = `${randomTop}px`;
         this.node.style.left = `${randomLeft}px`;
         //created a new image element and added it to the 'grunt' div
         const img = document.createElement('img');
         img.className = 'gruntImg'
-        img.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngitem.com%2Fmiddle%2FiJJhh_sheep-animals-cartoon-illustration-download-hq-png-cartoon%2F&psig=AOvVaw3nt_hBTgIxxpHnkHBBhKr_&ust=1677864521931000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCOC8nsjivf0CFQAAAAAdAAAAABAD';
+        img.src = chrome.runtime.getURL('/images/grunt.png');
         this.node.appendChild(img);
         
         gameBoard.appendChild(this.node);
@@ -61,10 +58,13 @@ function cursorCheck(gruntEl) {
     const gruntTag = gruntEl;
     let topPosition = Number(gruntTag.style.top.replace('px', ''));
     let leftPosition = Number(gruntTag.style.left.replace('px', ''));
-    console.log(leftPosition);
     // Check in Range //
 
     if ((mousePos.x - leftPosition <= 50 && (leftPosition + 50) - mousePos.x <= 50) && (mousePos.y - topPosition <= 50 && (topPosition + 50) - mousePos.y <= 50)) {
+        // // Load Munch Sound //
+        // const munchSound = new sound(chrome.runtime.getURL('/sounds/munchSound.mp3'));
+
+        // munchSound.play();
         alert('NO MORE BREAD - You herded ' + score + ' Sheep');
         mousePos.x = 0;
         mousePos.y = 0;
@@ -73,6 +73,24 @@ function cursorCheck(gruntEl) {
             grunt.remove();
           });
         location.reload();
+    }
+}
+
+// Create Sound Constructor //
+class sound {
+    constructor (src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    }
+    play() {
+        this.sound.play();
+    }
+    stop() {
+        this.sound.pause();
     }
 }
 

@@ -12,6 +12,7 @@
 }
 
 .buttonDiv {
+    z-index: 10001;
     background-color: black;
     text-align: center;
     justify-content: center;
@@ -33,6 +34,7 @@
     max-height: 80px;
     margin-top: 40px;
     border-radius: 10px;
+    color: black;
 }
 
 .gruntDiv {
@@ -47,4 +49,18 @@
     z-index: 10000;
     width: 50px;
     height: 50px;
+}
+
+.breadDiv {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    z-index: 9999;
+}
+
+.breadImg {
+    z-index: 10000;
+    width: 30px;
+    height: 30px;
 }
