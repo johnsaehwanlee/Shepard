@@ -1,5 +1,5 @@
 .gameBoard {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: transparent;
     position: fixed;
     z-index: 9998;
     width: 100%;
@@ -12,22 +12,30 @@
 }
 
 .buttonDiv {
-    background-color: blue;
+    background-color: black;
     text-align: center;
     justify-content: center;
-    display: flex;
+    align-items: center;
     width: 300px;
     height: 100px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .startButton {
   align-self: flex-end;
+  border-radius: 10px;
+  border: 1px solid white;
 }
 .userInput {
-    background-color: coral;
+    background-color: white;
+    max-width: 100px;
+    max-height: 80px;
+    margin-top: 40px;
+    border-radius: 10px;
 }
 
-.grunt {
+.gruntDiv {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -35,7 +43,8 @@
     z-index: 9999;
 }
 
-/* .grunt>img {
+.gruntImg {
+    z-index: 10000;
     width: 50px;
     height: 50px;
-} */
+}

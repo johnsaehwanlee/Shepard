@@ -1,10 +1,10 @@
 class Grunt {
     constructor(gameBoard) {
-        this.SPEED = 10;
+        this.SPEED = 1000000;
         this.pace = 1;
         this.node = document.createElement('div');
         // this.node.src = './images/grunt.png';
-        this.node.setAttribute('class', 'grunt');
+        this.node.setAttribute('class', 'gruntDiv');
 
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -18,9 +18,10 @@ class Grunt {
         this.node.style.left = `${randomLeft}px`;
         //created a new image element and added it to the 'grunt' div
         const img = document.createElement('img');
-        img.src = './images/grunt.png';
+        img.className = 'gruntImg'
+        img.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngitem.com%2Fmiddle%2FiJJhh_sheep-animals-cartoon-illustration-download-hq-png-cartoon%2F&psig=AOvVaw3nt_hBTgIxxpHnkHBBhKr_&ust=1677864521931000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCOC8nsjivf0CFQAAAAAdAAAAABAD';
         this.node.appendChild(img);
-        //end here
+        
         gameBoard.appendChild(this.node);
         setTimeout(this.move.bind(this), this.SPEED);
     }
@@ -64,7 +65,7 @@ function cursorCheck(gruntEl) {
     // Check in Range //
 
     if ((mousePos.x - leftPosition <= 50 && (leftPosition + 50) - mousePos.x <= 50) && (mousePos.y - topPosition <= 50 && (topPosition + 50) - mousePos.y <= 50)) {
-        alert('NO MORE BREAD - You Shepherded ' + score + ' Sheep');
+        alert('NO MORE BREAD - You herded ' + score + ' Sheep');
         mousePos.x = 0;
         mousePos.y = 0;
         const allGrunts = document.querySelectorAll('.grunt')
