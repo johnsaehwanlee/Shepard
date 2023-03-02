@@ -1,0 +1,52 @@
+//in manifest json, there should be a button to start the game 
+// Technical Challenges //
+// understanding the json manifest docs and what each property does
+// couldnt refer to a button in the popup from the document 
+// css position absolute, the grunt was getting the fixed position from its parent
+//  Ty didn't know css children get the properties of their parents
+// Moving the grunt acording to the cursor location 
+// creating the checkCursor algo with a range since position is absolute
+
+**// Strategy //**
+click extension, display popup with button
+start game on button click
+
+
+
+*// manifest.json//*
+
+// popup.html //
+// start button executes main.js
+// eventually we will style the button
+
+
+*// main.js //*
+// setInterval(enemySpawn(), 3 seconds)
+// get the mouse position
+
+*// enemy.js //* reference snake game for move functionality
+// class enemy
+// setTimeout(this.move(), )
+// this.move() 
+//  setInterval(this.move)
+//  run cursorCheck()
+//    if false, move towards cursor
+//    if true, end game
+
+// function cursorCheck() //outside constructor
+//  check the location of the enemy to the cursor
+//  return boolean
+//
+
+// to get grunt to be picture
+// create a folder that contains the picture
+// in main, create an array with the locations of the pictures
+
+
+
+// somehow get the start button to work
+// update the grunt images
+// waves
+//  takes user input and calls gruntSpawn()
+// instead of hardcoding number, in the start button you input a number
+// when you lose, have options to restart or stop

@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Invasion",
+    "description": "Invasion",
+    "version": "1.0",
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": [ "/images/*"],
+        "matches": [ "<all_urls>"]
+      }
+  ],
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["/scripts/grunt.js", "main.js"],
+          "css": ["style.css"]
+        }
+      ],
+      "permissions": [
+        "activeTab"
+      ]
+  }
