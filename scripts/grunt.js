@@ -1,6 +1,6 @@
 class Grunt {
     constructor(gameBoard) {
-        this.SPEED = 5;
+        this.SPEED = 10;
         this.pace = 1;
         this.node = document.createElement('div');
         // this.node.src = './images/grunt.png';
@@ -46,13 +46,7 @@ class Grunt {
             gruntTag.style.top = `${(topPosition += this.pace)}px`;
         }
 
-        if (cursorCheck(gruntTag)) {
-            alert('Game Over - You Shepherded ' + score + ' Sheep');
-        }
-        // console.log('left')
-        // console.log(gruntTag.style.left);
-        // console.log('top')
-        // console.log(gruntTag.style.top);
+        cursorCheck(this.node);
     }
 }
 
@@ -66,8 +60,19 @@ function cursorCheck(gruntEl) {
     // Check in Range //
 
     if ((mousePos.x - leftPosition <= 50 && (leftPosition + 50) - mousePos.x <= 50) && (mousePos.y - topPosition <= 50 && (topPosition + 50) - mousePos.y <= 50)) {
-        return true;
-    } else {
-        return false;
+        alert('NO MORE BREAD - You Shepherded ' + score + ' Sheep');
+        mousePos.x = 0;
+        mousePos.y = 0;
+        const allGrunts = document.querySelectorAll('.grunt')
+        allGrunts.forEach((grunt) => {
+            grunt.remove();
+          });
+        location.reload();
     }
 }
+
+// if (snake.body[0].x < 0 || snake.body[0].x >= board.width || snake.body[0].y < 0 || snake.body[0].y >= board.height) {
+//     alert('Mental capacity reached');
+//     board.board.removeChild(snake.element);
+//     location.reload();
+// }

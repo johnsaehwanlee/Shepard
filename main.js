@@ -12,16 +12,11 @@ const userInput = document.createElement('input');
 userInput.className = 'userInput';
 userInput.placeholder = '# of Sheep'
 startButton.className = 'startButton';
-startButton.innerText = 'Ready?';
+startButton.innerText = 'GIVE ME SHEEP';
 buttonDiv.append(userInput);
 buttonDiv.append(startButton);
 gameBoard.append(buttonDiv);
 console.log(buttonDiv);
-
-// Click Listener //
-startButton.addEventListener('click', function () {
-    alert('button click');
-});
 
 // Get Mouse Position //
 const mousePos = {};
@@ -40,12 +35,24 @@ function gruntSpawn (number) {
         const enemy = new Grunt(gameBoard);
         score++;
     }
-    // Increment Score //
-    
-
 }
 
-gruntSpawn(5);
+
+// Click Listener //
+startButton.addEventListener('click', function () {
+    // Check for User Input //
+    if (userInput.value) {
+        // Start Game with Value of Sheep
+        gruntSpawn(userInput.value);
+        setInterval(function() {gruntSpawn(userInput.value)}, 8000);
+    } else {
+        // Start Game with 1 Sheep 
+        gruntSpawn(1);
+        setInterval(function() {gruntSpawn(1)}, 8000);
+    }
+    buttonDiv.remove();
+});
+
 
 
 

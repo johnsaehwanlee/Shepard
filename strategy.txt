@@ -6,6 +6,10 @@
 //  Ty didn't know css children get the properties of their parents
 // Moving the grunt acording to the cursor location 
 // creating the checkCursor algo with a range since position is absolute
+// the alert message in our cursorCheck triggered over and over again
+
+// wanted to solidify our understanding of DOM manipulation and the concepts introduced in snake game 
+//    so we chose a similar project
 
 **// Strategy //**
 click extension, display popup with button
@@ -50,3 +54,6 @@ start game on button click
 //  takes user input and calls gruntSpawn()
 // instead of hardcoding number, in the start button you input a number
 // when you lose, have options to restart or stop
+
+
+//turn extension on and off?
