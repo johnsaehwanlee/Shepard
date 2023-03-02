@@ -16,7 +16,11 @@ class Grunt {
 
         this.node.style.top = `${randomTop}px`;
         this.node.style.left = `${randomLeft}px`;
-
+        //created a new image element and added it to the 'grunt' div
+        const img = document.createElement('img');
+        img.src = './images/grunt.png';
+        this.node.appendChild(img);
+        //end here
         gameBoard.appendChild(this.node);
         setTimeout(this.move.bind(this), this.SPEED);
     }
