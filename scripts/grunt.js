@@ -3,24 +3,22 @@ class Grunt {
         this.SPEED = 10;
         this.pace = 1;
         this.node = document.createElement('div');
-        // this.node.src = './images/grunt.png';
-        this.node.setAttribute('class', 'grunt');
+        this.node.setAttribute('class', 'gruntDiv');
 
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
         const randomTop = (Math.floor(Math.random() * viewportHeight));
         const randomLeft = (Math.floor(Math.random() * viewportWidth));
-        console.log(gameBoard.style.height)
-        console.log(gameBoard.style.width)
 
         this.node.style.top = `${randomTop}px`;
         this.node.style.left = `${randomLeft}px`;
         //created a new image element and added it to the 'grunt' div
         const img = document.createElement('img');
-        img.src = './images/grunt.png';
+        img.className = 'gruntImg'
+        img.src = chrome.runtime.getURL('/images/grunt.png');
         this.node.appendChild(img);
-        //end here
+
         gameBoard.appendChild(this.node);
         setTimeout(this.move.bind(this), this.SPEED);
     }
@@ -60,18 +58,41 @@ function cursorCheck(gruntEl) {
     const gruntTag = gruntEl;
     let topPosition = Number(gruntTag.style.top.replace('px', ''));
     let leftPosition = Number(gruntTag.style.left.replace('px', ''));
-    console.log(leftPosition);
     // Check in Range //
 
     if ((mousePos.x - leftPosition <= 50 && (leftPosition + 50) - mousePos.x <= 50) && (mousePos.y - topPosition <= 50 && (topPosition + 50) - mousePos.y <= 50)) {
-        alert('NO MORE BREAD - You Shepherded ' + score + ' Sheep');
+        // Load Munch Sound //
+        const munchSound = new Audio();
+        munchSound.src = chrome.runtime.getURL('/sounds/munchSound.mp3');
+
+        munchSound.play();
+        alert('NO MORE BREAD - You herded ' + score + ' Sheep');
         mousePos.x = 0;
         mousePos.y = 0;
         const allGrunts = document.querySelectorAll('.grunt')
         allGrunts.forEach((grunt) => {
             grunt.remove();
-          });
+        });
+        // munchSound.play();//added this here, not sure if works
         location.reload();
+    }
+}
+
+// Create Sound Constructor //
+class sound {
+    constructor(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+    }
+    play() {
+        this.sound.play();
+    }
+    stop() {
+        this.sound.pause();
     }
 }
 

@@ -1,15 +1,30 @@
 //in manifest json, there should be a button to start the game 
 // Technical Challenges //
-// understanding the json manifest docs and what each property does
+
+// understanding the json manifest docs and what each property does // background, service workers, how to 
+
 // couldnt refer to a button in the popup from the document 
 // css position absolute, the grunt was getting the fixed position from its parent
 //  Ty didn't know css children get the properties of their parents
+
 // Moving the grunt acording to the cursor location 
 // creating the checkCursor algo with a range since position is absolute
+
 // the alert message in our cursorCheck triggered over and over again
+//audio files not working
 
 // wanted to solidify our understanding of DOM manipulation and the concepts introduced in snake game 
 //    so we chose a similar project
+//
+//
+
+// Ty Demo //
+// spent some time in the manifest docs, learning about background, service workers, content_scripts 
+// image sourcing & making local files available to the extension at runtime
+// POPUP BUTTON 
+
+//checking the cursor location against the sheep location required an algorithm that covers a range instead of a specific pixel on the page
+//audio files not working, uncertain with the manifest v3 supportability
 
 **// Strategy //**
 click extension, display popup with button

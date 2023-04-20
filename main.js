@@ -18,23 +18,45 @@ buttonDiv.append(startButton);
 gameBoard.append(buttonDiv);
 console.log(buttonDiv);
 
+// Create Bread Div //
+const breadDiv = document.createElement('div');
+breadDiv.setAttribute('class', 'breadDiv');
+const breadImg = document.createElement('img');
+breadImg.className = 'breadImg'
+breadImg.src = chrome.runtime.getURL('/images/bread.png');
+breadDiv.appendChild(breadImg);
+gameBoard.appendChild(breadDiv);
+
+// // Load Sheep Sound //
+// const sheepSound = new sound(chrome.runtime.getURL('/sounds/sheepSound.mp3'));
+
+// // Load Munch Sound //trying the munch audio again
+// const munchSound = new sound(chrome.runtime.getURL('/sounds/munchSound.mp3'));
+// let munchSound = new Audio();
+// munchSound.src = chrome.runtime.getURL('/sounds/munchSound.mp3');
+
+
 // Get Mouse Position //
 const mousePos = {};
 document.addEventListener('mousemove', function (event) {
     mousePos.x = event.clientX;
     mousePos.y = event.clientY;
-    console.log(mousePos);
+
+    // Move Bread to MousePos //
+    breadDiv.style.left = `${mousePos.x}px`;
+    breadDiv.style.top = `${mousePos.y}px`;
 });
 
 // Initialize Score //
 let score = 0
 
 // Grunt Spawn //
-function gruntSpawn (number) {
+function gruntSpawn(number) {
     for (let i = 0; i < number; i++) {
         const enemy = new Grunt(gameBoard);
         score++;
     }
+    // sheepSound.play();
 }
 
 
@@ -44,11 +66,11 @@ startButton.addEventListener('click', function () {
     if (userInput.value) {
         // Start Game with Value of Sheep
         gruntSpawn(userInput.value);
-        setInterval(function() {gruntSpawn(userInput.value)}, 8000);
+        setInterval(function () { gruntSpawn(userInput.value) }, 6000);
     } else {
         // Start Game with 1 Sheep 
         gruntSpawn(1);
-        setInterval(function() {gruntSpawn(1)}, 8000);
+        setInterval(function () { gruntSpawn(1) }, 6000);
     }
     buttonDiv.remove();
 });
